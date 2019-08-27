@@ -1,0 +1,14 @@
+.navbar-brand img{
+    width: 11rem;
+}
+
+.nav-item {
+    margin: 0 1.3rem;
+    font-size: 1rem;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding: 24px;
+    background: white !important;
+    border-bottom: 1px solid #ccc;
+}

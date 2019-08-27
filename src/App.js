@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter , Redirect, withRouter, Switch , Route, Link } from "react-router-dom";
+import Course from './components/Course'
+import Programs from './components/Programs';
+import Nav from './components/Nav'
+import './mycss/app.css';
+
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: () => <Redirect to="/programs/"/>
+  },
+  {
+    path: "/programs",
+    exact: true,
+    component: () => <Programs />
+  },
+  {
+    path: "/programs/:courseId",
+    exact: true,
+    component: () => <Course />
+  },
+
+]
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+          <div>
+            <Route component={Nav} />
+            {/* <Switch> */}
+              {routes.map((route, i) => (
+                <Route key={i} exact={route.exact} path={route.path} component={route.component} /> 
+              ))}
+            {/* </Switch> */}
+        
+          </div>
+    );
 }
 
 export default App;
